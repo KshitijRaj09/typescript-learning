@@ -16,8 +16,9 @@ const App: React.FC = () => {
     console.log(todos, input);
   };
 
-  const renderTodoList = () => {
-    return todos.map((todo) => <TodoList key={todo.id} {...todo} />);
+  const deleteTodoHandler = (id: number) => {
+    const updateTodos = todos.filter((t) => t.id !== id);
+    setTodos(updateTodos);
   };
 
   return (
@@ -28,7 +29,11 @@ const App: React.FC = () => {
         setInput={setInput}
         todoAddHandler={todoAddHandler}
       />
-      {renderTodoList()}
+      <TodoList
+        todos={todos}
+        setTodos={setTodos}
+        deleteTodoHandler={deleteTodoHandler}
+      />
     </div>
   );
 };

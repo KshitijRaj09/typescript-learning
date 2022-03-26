@@ -1,17 +1,23 @@
+import { Todos } from '../model';
+import { SingleTodo } from './SingleTodo';
+
 interface Props {
-  id: number;
-  todo: string;
-  isDone: boolean;
+  todos: Todos[];
+  setTodos: React.Dispatch<React.SetStateAction<Todos[]>>;
+  deleteTodoHandler: (id: number) => void;
 }
 
-const TodoList = ({ id, todo, isDone }: Props) => {
-  return (
-    <div>
-      <span>{todo}</span>
-      {isDone}
-      <span>Not Done</span>
-    </div>
-  );
+const TodoList = ({ todos, setTodos, deleteTodoHandler }: Props) => {
+  const renderTodoList = () =>
+    todos.map((todo) => (
+      <SingleTodo
+        key={todo.id}
+        todo={todo}
+        deleteTodoHandler={deleteTodoHandler}
+      />
+    ));
+
+  return <div>{renderTodoList()}</div>;
 };
 
 export default TodoList;
