@@ -1,23 +1,23 @@
-import { Todos } from '../model';
+import { Notes } from '../model';
 import { SingleTodo } from './SingleTodo';
 
 interface Props {
-  todos: Todos[];
-  setTodos: React.Dispatch<React.SetStateAction<Todos[]>>;
-  deleteTodoHandler: (id: number) => void;
+  notes: Notes[];
+  setNotes: React.Dispatch<React.SetStateAction<Notes[]>>;
+  deleteNoteHandler: (id: number) => void;
 }
 
-const TodoList = ({ todos, setTodos, deleteTodoHandler }: Props) => {
-  const renderTodoList = () =>
-    todos.map((todo) => (
+const TodoList = ({ notes, setNotes, deleteNoteHandler }: Props) => {
+  const renderNoteList = () =>
+    notes.map((note) => (
       <SingleTodo
-        key={todo.id}
-        todo={todo}
-        deleteTodoHandler={deleteTodoHandler}
+        key={note.id}
+        note={note}
+        deleteNoteHandler={deleteNoteHandler}
       />
     ));
 
-  return <div>{renderTodoList()}</div>;
+  return <div>{renderNoteList()}</div>;
 };
 
 export default TodoList;

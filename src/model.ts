@@ -1,5 +1,4 @@
-export interface Todos {
+export interface Notes {
     id : number;
-    todo : string;
-    isDone : boolean;
+    note : string;
 }

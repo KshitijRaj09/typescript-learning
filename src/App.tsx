@@ -2,37 +2,36 @@ import React, { useState } from 'react';
 import './App.css';
 import { InputField } from './components/InputField';
 import TodoList from './components/TodoList';
-import { Todos } from './model';
+import { Notes } from './model';
 
 const App: React.FC = () => {
   const [input, setInput] = useState<string>('');
-  const [todos, setTodos] = useState<Todos[]>([]);
+  const [notes, setNotes] = useState<Notes[]>([]);
 
   const todoAddHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!input) return;
-    setTodos([...todos, { id: Date.now(), todo: input, isDone: false }]);
+    setNotes([...notes, { id: Date.now(), note: input }]);
     setInput('');
-    console.log(todos, input);
   };
 
-  const deleteTodoHandler = (id: number) => {
-    const updateTodos = todos.filter((t) => t.id !== id);
-    setTodos(updateTodos);
+  const deleteNoteHandler = (id: number) => {
+    const updateTodos = notes.filter((t) => t.id !== id);
+    setNotes(updateTodos);
   };
 
   return (
     <div className='App'>
-      TodoList using TypeScript
+      Keep-Notes using TypeScript
       <InputField
         input={input}
         setInput={setInput}
         todoAddHandler={todoAddHandler}
       />
       <TodoList
-        todos={todos}
-        setTodos={setTodos}
-        deleteTodoHandler={deleteTodoHandler}
+        notes={notes}
+        setNotes={setNotes}
+        deleteNoteHandler={deleteNoteHandler}
       />
     </div>
   );

@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=PT+Sans&display=swap');
 
+:root {
+  --input-primaryColor: #f7f5f2;
+  --textArea-mainConatiner: #dfdfde;
+  --body-backgroundColor: #c3e5ae;
+}
+
 body {
   margin: 0;
   font-family: 'PT Sans', sans-serif, 'Comfortaa', cursive, 'Indie Flower',
@@ -8,6 +14,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--body-backgroundColor);
 }
 
 code {
@@ -15,4 +22,10 @@ code {
     monospace;
   font-family: 'Comfortaa', cursive;
   font-family: 'Indie Flower', cursive;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
