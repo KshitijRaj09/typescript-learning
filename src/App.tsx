@@ -23,7 +23,6 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    if (notes.length < 1) return;
     localStorage.setItem('savedNotes', JSON.stringify(notes));
   }, [notes]);
   let data: AppProps = {
