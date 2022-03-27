@@ -5,6 +5,7 @@
 .edit-options {
   display: flex;
   gap: 10px;
+  padding: 0 5px;
 }
 
 .options {

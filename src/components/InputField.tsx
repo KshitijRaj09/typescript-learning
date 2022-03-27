@@ -1,19 +1,15 @@
-import { useRef } from 'react';
-import {
-  StyledInputTextArea,
-  TextAreaContainer,
-} from '../styleComponents/textArea.style';
-import { RiEdit2Line } from 'react-icons/ri';
-import { MdOutlineEditOff } from 'react-icons/md';
+import { useContext, useRef } from 'react';
+import { TextAreaContainer } from '../styleComponents/textArea.style';
 import { Styledform } from '../styleComponents/form.style';
-interface Props {
-  input: string;
-  setInput: React.Dispatch<React.SetStateAction<string>>;
-  todoAddHandler: (event: React.FormEvent<HTMLFormElement>) => void;
-}
+import TextAreaComponent from './TextAreaComponent';
+import InputComponent from './InputComponent';
+import { NotesContext } from '../App';
+import Button from './Button';
 
-export const InputField = ({ input, setInput, todoAddHandler }: Props) => {
+export const InputField = () => {
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const { heading, setHeading, todoAddHandler, input, setInput } =
+    useContext(NotesContext);
   return (
     <Styledform
       onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
@@ -24,26 +20,24 @@ export const InputField = ({ input, setInput, todoAddHandler }: Props) => {
       <TextAreaContainer>
         <div>
           <span className='input-span'>
-            <input type='text' value='heading' placeholder='title' />
-          </span>
-          <span className='edit-options'>
-            <RiEdit2Line className='options' />
-            <MdOutlineEditOff className='options' />
+            <InputComponent>
+              <input
+                type='text'
+                value={heading}
+                placeholder='Heading...'
+                onChange={(event) => setHeading(event.target.value)}
+              />
+            </InputComponent>
           </span>
         </div>
-        <StyledInputTextArea
-          name='notesInput'
-          value={input}
-          onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) =>
-            setInput(event.target.value)
-          }
-          ref={inputRef}
-          placeholder='Jot something down...'
-          onBlur={() => console.log('called on blur')}
-          resize='vertical'
+
+        <TextAreaComponent
+          innerRef={inputRef}
+          input={input}
+          setInput={setInput}
         />
       </TextAreaContainer>
-      <button type='submit'>Add to Notes</button>
+      <Button />
     </Styledform>
   );
 };

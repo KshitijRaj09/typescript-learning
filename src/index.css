@@ -3,7 +3,11 @@
 :root {
   --input-primaryColor: #f7f5f2;
   --textArea-mainConatiner: #dfdfde;
-  --body-backgroundColor: #c3e5ae;
+  --body-backgroundColor: #f4fcd9;
+  --button-backgroundColor: #fff;
+  --button-backgroundColorHover: #2ee59d;
+  --savedNotes-backgroundColor: #bb9981;
+  --font-color: #141e27;
 }
 
 body {
@@ -28,4 +32,15 @@ code {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+button,
+textarea {
+  color: var(--font-color);
+  font-size: 14px;
+}
+
+h4 {
+  padding: 10px;
+  color: #488fb1;
 }

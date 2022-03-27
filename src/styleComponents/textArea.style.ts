@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 
-export const StyledInputTextArea = styled.textarea`
+interface TextAreaProps{
+  resize: string;
+}
+
+interface TextAreaContainerProps{
+  bgColor?: boolean;
+}
+
+export const StyledInputTextArea = styled.textarea<TextAreaProps>`
   border-radius: 0 0 10px 10px;
   background-color: var(--input-primaryColor);
   resize: ${(props) => props.resize || 'none'};
@@ -11,13 +19,13 @@ export const StyledInputTextArea = styled.textarea`
   height: 150px;
 `;
 
-export const TextAreaContainer = styled.div`
+export const TextAreaContainer = styled.div<TextAreaContainerProps>`
   display: inline-block;
   margin: 4px;
   & div {
     padding: 2px 4px;
     border-radius: 10px 10px 0 0;
-    background-color: var(--textArea-mainConatiner);
+    background-color: ${(props)=> props.bgColor ? 'var(--savedNotes-backgroundColor)':'var(--textArea-mainConatiner)'};
     display: flex;
     justify-content: space-between;
     align-items: center;
